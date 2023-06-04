@@ -1,57 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title class="text-center">Cruel Station Careers</title>
-    <style>
-        h1 {
-font-size: 40px;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
-font-weight: normal;
-color: rgb(45,70,105);
-text-align: center;
-        }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <style>
+            #banner {
+                height: 360px;
+                object-fit: cover;
+                width: 100%;
+            }
+        </style>
+</head>
 
-        #banner {
-            width: 100%;
-            height: 360px;
-            object-fit: cover;
-        }
-        h2 {
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 32px;
-            color: rgb(160,110,240);
-            text-align: center;
-            font-weight: normal;
-        }
-        .bodytext {
-            font-family:Verdana, Geneva, Tahoma, sans-serif;
-            color: rgb(80,80,80);
-        }
+<body>
+    <div class="container">
+        <h1 class="text-center">{{company_name}} Careers</h1>
+        <img class="img-fluid" id="banner" src="/static/banner.jpg" height="320">
+        <h2 class="text-center">About Cruel Station</h2>
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+        </p>
+        <h2 class="text-center mt-2 mb-4">Open Positions</h2>
+        <div>
+            {% for job in jobs %}
+              {% include 'jobitem.html' %}  
+            {% endfor %}
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary btn-lg">Contact Us</button>
+            <p class="mt-4">Copyright 2023, Cruel Station</p>
+        </div>
+    </div>
+</body>
 
-        #container {
-            max-width: 720px;
-            margin: 0 auto 0 auto;
-        }
-    </style>
-  </head>
-  <body>
-    <div id="container">
-<h1>Cruel Station Careers</h1>
-<img id="banner" src="/static/banner.jpg" height="320">
-<h2 class="text-center">About Cruel Station</h2>
-<p class="bodytext">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p>
-<h2 class="text-center mt-2 mb-4">Open Positions</h2>
-<div>
-    {% for job in jobs %}
-<div>{{job['title']}}</div>
-    {% endfor %}
-</div>
-<div style="text-align:center;">
-<button class="btn btn-outline-success">Contact Us</button>
-<p class="mt-4">Copyright 2023, Cruel Station</p>
-</div>
-</div>
-     </body>
 </html>

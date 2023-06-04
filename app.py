@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
@@ -20,12 +20,26 @@ JOBS = [
     'id': 3,
     'title': 'Data Analyst',
     'location': 'Remote',
-    'salary': '$50,000.00'
+    'salary': ''
+  },
+  {
+    'id': 4,
+    'title': 'Brand Manager',
+    'location': 'San Fransisco, USA',
+    'salary': '$125,000.00'
+
   }
 ]
 @app.route("/")
 def hello_world():
-  return render_template("index.html",jobs=JOBS)
+  return render_template("index.html",jobs=JOBS,
+  company_name='Cruel Station' )
+
+@app.route("/jobs")
+
+def list_jobs():
+    return jsonify(JOBS)
+
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)
