@@ -35,7 +35,7 @@ def hello_world():
   return render_template("index.html",jobs=JOBS,
   company_name='Cruel Station' )
 
-@app.route("/jobs")
+@app.route("/api/jobs")
 
 def list_jobs():
     return jsonify(JOBS)
