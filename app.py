@@ -13,7 +13,7 @@ JOBS = [
     'id': 2,
     'title': 'Talent Manager',
     'location': 'Lagos, Nigeria',
-    'salary': '#500,000.00'
+    'salary': '#575,000.00'
 
   },
   {
@@ -26,7 +26,7 @@ JOBS = [
     'id': 4,
     'title': 'Brand Manager',
     'location': 'San Fransisco, USA',
-    'salary': '$125,000.00'
+    'salary': '$145,000.00'
 
   }
 ]
