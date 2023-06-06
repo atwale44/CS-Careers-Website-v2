@@ -6,7 +6,7 @@ db_connection_string = env.database['connection_string']
 engine = create_engine(db_connection_string,
 connect_args = {
 "ssl":{
-    "ssl_ca": "/etc/ssl/cert.pem",
+        'rejectUnauthorized': False,
     }
 })
 
