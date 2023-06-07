@@ -52,4 +52,3 @@ def add_application_to_db(job_id, data):
              'work_experience': data['work_experience'],
              'resume_url': data['resume_url']
             }])
-                       
