@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'nav.html' %}
+        {% include 'banner.html' %}
 <h4>Register Here</h4>
+{% include 'bootstrap.html' %}
 <form action="/create_user" method="post">
 <div class="mb-2">
     <label>Username</label><br>
@@ -17,3 +23,6 @@
 
 <input type="Submit" value ="Create Account">
 </form>
+{% include 'footer.html' %}
+    </head>
+</html>

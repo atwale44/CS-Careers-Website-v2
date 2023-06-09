@@ -47,7 +47,7 @@ def create_user():
 
 @app.route('/success')
 def success():
-   return 'logged in successfully'
+   return render_template('success.html')
 
 
 
