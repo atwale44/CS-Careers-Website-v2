@@ -52,3 +52,13 @@ def add_application_to_db(job_id, data):
              'work_experience': data['work_experience'],
              'resume_url': data['resume_url']
             }])
+
+def create_user_to_db(data):
+   with engine.connect() as conn:
+      query = text("INSERT INTO accounts ( username, password, email) VALUES(:username, :password, :email)")
+
+      conn.execute(query, [{
+         'username': data['username'],
+         'password': data['password'],
+         'email': data['email']
+      }])
