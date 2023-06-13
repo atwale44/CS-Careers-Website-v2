@@ -3,3 +3,4 @@ gunicorn
 python-dotenv
 sqlalchemy
 pymysql
+Flask-Login

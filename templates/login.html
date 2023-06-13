@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    {% include 'bootstrap.html' %}
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    {% include 'banner.html' %}
+
+    <div class="container">
+        <h4>Welcome</h4>
+        <form action="/user_auth" method="post" style="max-width: 300px">
+            {% if(error == 'login') %}
+                <small class="text-danger d-block">Invalid login credentials</small>
+            {% endif %}
+
+            <div class="mb-2">
+                <label>Username</label>
+                <input class="form-control" type="text" name="username">
+                {% if(error == 'username') %}
+                    <small class="text-danger d-block">The username field is required</small>
+                {% endif %}
+            </div>
+
+            <div class="mb-2">
+                <label>Password</label><br>
+                <input class="form-control" type="password" name="password">
+                {% if(error == 'password') %}
+                    <small class="text-danger d-block">The password field is required</small>
+                {% endif %}
+            </div>
+
+            <input type="Submit" value="Login">
+        </form>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>
