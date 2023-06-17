@@ -92,3 +92,15 @@ def user_exist_in_db(uname):
             return False
         else:
             return True
+
+def email_exist_in_db(ename):
+    with engine.connect() as conn:
+
+        result = conn.execute(text("SELECT * FROM  accounts WHERE email = :email"), [{
+            'email': ename
+        }])
+        rows = result.mappings().all()
+        if len(rows) == 0:
+            return False
+        else:
+            return True

@@ -1,7 +1,11 @@
-from flask import Flask, render_template, jsonify, request, redirect, url_for
-from database import load_jobs_from_db, load_job_from_db, add_application_to_db, create_user_to_db, login_user_to_db, user_exist_in_db
+from flask import Flask, render_template, jsonify, request, redirect, url_for, session
+from database import load_jobs_from_db, load_job_from_db, add_application_to_db, create_user_to_db, login_user_to_db, user_exist_in_db, email_exist_in_db
+import os
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+app.secret_key = os.urandom(24)
 
 @app.route("/")
 def cs_careers():
@@ -39,22 +43,18 @@ def apply_to_job(id):
 def registration_to_job():
    return render_template('registration.html')
 
-@app.route("/about")
-def verunka():
-   return render_template('verunka.html')
 
 @app.route("/create_user", methods=['post'])
 def create_user():
    data = request.form
 
+# validate that the email and username is not already taken.
    if (user_exist_in_db(data['username'])):
       return redirect(url_for('registration_to_job'))
+   
+   if (email_exist_in_db(data['email'])):
+      return redirect(url_for('registration_to_job'))
 
-
-
-   # todo: do basic validation
-
-   # validate that the email and username is not already taken.
 
    create_user_to_db(data)
    return redirect (url_for('success'))
@@ -67,6 +67,7 @@ def success():
 def login_to_job():
    error = request.args.get('err')
 
+    
    return render_template('login.html', error = error)
 
 @app.route('/user_auth', methods=['post'])
@@ -87,9 +88,14 @@ def user_auth():
       return redirect(url_for('login_to_job', err = 'login'))
 
    # Session -- It is used to store the currently logged in user on a browser.
+   
+    
    # Read on MD5 for password hashing
 
+
    return redirect(url_for('logon'))
+
+
 
 @app.route('/logon')
 def logon():
